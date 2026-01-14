@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sliding Page Transition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="page-container">
+        <div id="home" class="page active">
+            <h1>Welcome</h1>
+            <p>Experience smooth page transitions with a modern sliding effect. Click the navigation links above to see the magic happen.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Load navigation
+        fetch('/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+</body>
+</html>

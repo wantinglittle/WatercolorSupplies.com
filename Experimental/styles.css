@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #0066ff;
+}
+
+/* Page Container */
+.page-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Individual Pages */
+.page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 40px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: translateY(100%) scale(1);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), 
+                opacity 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.page.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.page.exiting {
+    transform: translateY(-30%) scale(0.95);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Page Styling */
+#home {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#about {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+#services {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+#contact {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.page h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.page p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .page h1 {
+        font-size: 2.5rem;
+    }
+
+    .page p {
+        font-size: 1rem;
+    }
+}
+
+.page {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.page.exiting {
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+.page.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 10;
+}

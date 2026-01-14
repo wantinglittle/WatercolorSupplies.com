@@ -1,0 +1,4 @@
+# Remove trailing slashes
+/about/  /about  301!
+/services/  /services  301!
+/contact/  /contact  301!

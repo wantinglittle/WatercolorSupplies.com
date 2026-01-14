@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Sliding Page Transition</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="page-container">
+        <div id="services" class="page active">
+            <h1>Our Services</h1>
+            <p>From design to development, we offer comprehensive solutions to help your business thrive in the digital landscape.</p>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+    <script>
+        // Load navigation
+        fetch('/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+</body>
+</html>
